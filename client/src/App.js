@@ -10,6 +10,7 @@ import Header from './containers/Header'
 // pages
 import Home from './pages/Home'
 import Register from './pages/Register'
+import Login from './pages/Login'
 
 class App extends Component {
   render() {
@@ -21,6 +22,7 @@ class App extends Component {
             <Switch>
               <Route exact path="/" component={Home} />
               <Route path="/register" component={Register} />
+              <Route path="/login" component={Login} />
             </Switch>
           </>
         </BrowserRouter>
