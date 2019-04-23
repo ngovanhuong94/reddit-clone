@@ -1,33 +1,39 @@
 import React from 'react'
+import { Field, reduxForm } from 'redux-form'
+
 import Form from '../../components/Form'
-import Input from '../../components/Input'
+import Button from '../../components/Button'
+import renderField from '../../components/Form/renderField';
 
 class RegisterForm extends React.Component {
     render () {
         return (
             <Form>
-                <Form.Item>
-                    <Input 
-                        type="text"
-                        placeholder="Username"
-                    />
-                </Form.Item>
-                <Form.Item>
-                    <Input 
-                        type="text"
-                        placeholder="Password"
-                    />
-                </Form.Item>
-                <Form.Item>
-                    <Input 
-                        type="text"
-                        placeholder="Confirm password"
-                    />
-                </Form.Item>
+                <Field 
+                    type="text" 
+                    name="username" 
+                    placeholder="Username" 
+                    component={renderField} 
+                />
+                <Field 
+                    type="password"
+                    name="password" 
+                    placeholder="Password" 
+                    component={renderField}
+                />
+                <Field 
+                    type="password"
+                    name="password2" 
+                    placeholder="Confirm password" 
+                    component={renderField}
+                />
+                <Button>Submit</Button>
             </Form>
         )
     }
 }
 
 
-export default RegisterForm
+export default reduxForm({
+    form: 'register'
+})(RegisterForm)

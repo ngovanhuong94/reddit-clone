@@ -8,7 +8,7 @@ const theme = {
     metaText: '#7c7c7c',
     
     
-    fontSizeNormal: '16px',
+    fontSizeNormal: '14px',
     fontSizeLarge: '20px',
     fontSizeSmall: '12px',
     
