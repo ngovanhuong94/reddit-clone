@@ -1,6 +1,7 @@
 import React from 'react'
 import Input from '../Input'
 import FormItem from './FormItem'
+import Small from '../Small'
 
 const renderField = (field) => (
     <FormItem>
@@ -9,7 +10,7 @@ const renderField = (field) => (
             type={field.type}
             placeholder={field.placeholder}
         />
-        { field.touched && field.error && <span>{field.error}</span>}
+        { field.meta.touched && field.meta.error && <Small error>{field.meta.error}</Small>}
     </FormItem>
 )
 
