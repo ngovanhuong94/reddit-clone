@@ -10,7 +10,7 @@ dotenv.config()
 // connect database
 mongoose.connect(process.env.MONGODB_URL, { useNewUrlParser: true })
 .then(() => console.log('Connected to database'))
-.catch(() => console('Failed to connect database'))
+.catch(() => console.log('Failed to connect database'))
 
 // create app
 const app = express()

@@ -1,14 +1,18 @@
+const User = require('../models/User')
+const jwt = require('jsonwebtoken')
 const router = require('express').Router()
-const validationRegister = require('../validation/register')
+const { validateRegister } = require('../controllers/validation')
 
-router.get('/register', (req, res) => {
-    const { isValid, errors } = validationRegister(req.body)
+function createToken (user) {
+    return jwt.sign({ user }, process.env.SECRET, { expiresIn: '1d'})
+}
 
-    if (!isValid) {
-        return res.status(423).json(errors)
-    }
+router.post('/register', validateRegister, async (req, res, next) => {
+    const { username, password } = req.body
+    const user = await User.create({ username, password })
+    const token = createToken(user.toJSON())
 
-    return res.send('Ok!')
+    return res.json({ token })
 })
 
 module.exports = router

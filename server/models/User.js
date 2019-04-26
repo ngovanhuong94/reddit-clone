@@ -17,8 +17,18 @@ userSchema.pre('save', async function (next) {
     next()
 })
 
+
 userSchema.methods.comparePassword = async function (password) {
     return await bcrypt.compare(password, this.password)
 } 
 
+userSchema.set('toJSON', { getters: true })
+
+userSchema.options.toJSON.transform = function (doc, ret, options) {
+    ret.id = ret._id
+    delete ret._id
+    delete ret.__v
+    delete ret.password
+    return ret
+}
 module.exports = mongoose.model('User', userSchema)
