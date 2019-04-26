@@ -3,7 +3,7 @@ const express = require('express')
 const dotenv = require('dotenv')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
-
+const cors = require('cors')
 // config environment
 dotenv.config()
 
@@ -18,6 +18,7 @@ const app = express()
 // config middlewares
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
+app.use(cors())
 
 // routes
 app.use('/api/auth', require('./routes/auth'))
