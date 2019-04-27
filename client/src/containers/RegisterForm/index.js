@@ -1,7 +1,7 @@
 import { reduxForm } from 'redux-form'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
-
+import { withRouter } from 'react-router-dom'
 import { registerUser } from '../../actions/auth'
 
 import validate from './validate'
@@ -17,4 +17,4 @@ const mapStateToProps = (state) => ({
 export default compose(
     reduxForm({ form: 'regsiter', validate }),
     connect(mapStateToProps, { registerUser })
-)(RegisterForm)
+)(withRouter(RegisterForm))

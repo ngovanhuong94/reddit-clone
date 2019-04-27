@@ -15,6 +15,13 @@ class RegisterForm extends React.Component {
             error: null
         }
     }
+
+    componentDidUpdate() {
+        if (this.props.token) {
+            this.props.history.push('/')
+        }
+    }
+
     componentWillReceiveProps(nextProps) {
         if (nextProps.error) {
             this.setState({ error: nextProps.error })
