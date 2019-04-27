@@ -4,6 +4,7 @@ const dotenv = require('dotenv')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const cors = require('cors')
+const passport = require('passport')
 // config environment
 dotenv.config()
 
@@ -19,6 +20,9 @@ const app = express()
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cors())
+app.use(passport.initialize())
+passport.use(require('./config/passportJwt'))
+passport.use(require('./config/passportLocal'))
 
 // routes
 app.use('/api/auth', require('./routes/auth'))
