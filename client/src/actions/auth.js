@@ -4,7 +4,8 @@ import {
     REGISTER_SUCCESS,
     LOGIN_REQUEST,
     LOGIN_SUCCESS,
-    LOGIN_ERROR
+    LOGIN_ERROR,
+    LOGOUT
 } from '../constants'
 
 import { register, login } from '../utils/api'
@@ -49,4 +50,11 @@ export const loginUser = (username, password) => async (dispatch) => {
             payload: err 
         })
     }
+}
+
+export const logoutUser = () => dispatch => {
+    localStorage.clear()
+    dispatch({
+        type: LOGOUT
+    })
 }
