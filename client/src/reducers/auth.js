@@ -1,7 +1,10 @@
 import {
     REGISTER_REQUEST,
     REGISTER_SUCCESS,
-    REGISTER_ERROR
+    REGISTER_ERROR,
+    LOGIN_REQUEST,
+    LOGIN_SUCCESS,
+    LOGIN_ERROR
 } from '../constants'
 import jwt_decode from 'jwt-decode'
 
@@ -16,19 +19,22 @@ const initialState = {
 
 export default function (state = initialState, action) {
     switch (action.type) {
-        case REGISTER_REQUEST:
+        case REGISTER_REQUEST,
+             LOGIN_REQUEST:
             return {
                 ...state,
                 loading: true
             }
-        case REGISTER_SUCCESS:
+        case REGISTER_SUCCESS,
+            LOGIN_SUCCESS:
             return {
                 ...state,
                 loading: false,
                 token: action.payload,
                 user: jwt_decode(action.payload)
             }
-        case REGISTER_ERROR:
+        case REGISTER_ERROR,
+             LOGIN_ERROR:
             return {
                 ...state,
                 loading: false
