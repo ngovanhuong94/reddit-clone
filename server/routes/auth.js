@@ -1,5 +1,6 @@
 const User = require('../models/User')
 const jwt = require('jsonwebtoken')
+const passport = require('passport')
 const router = require('express').Router()
 const { validateRegister, validateLogin } = require('../controllers/validation')
 
@@ -16,8 +17,13 @@ router.post('/register', validateRegister, async (req, res, next) => {
 })
 
 router.post('/login', validateLogin,(req, res, next) => {
-    const { username, password } = req.body
-    res.send({ username, password })
+    passport.authenticate('local', (err, user, info) => {
+        if (err) { return next(err)}
+        if (!user) { return res.status(401).json(info)}
+        const token = createToken(user)
+
+        return res.json({ token })
+    })(req, res, next)
 })
 
 module.exports = router
