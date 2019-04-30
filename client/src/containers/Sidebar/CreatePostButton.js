@@ -13,6 +13,6 @@ const StyledCreatePostLink = styled(Link)`
     width: 100%
 `
 
-const CreatePostButton = (props) => <StyledCreatePostLink to="/" {...props}>Create Post</StyledCreatePostLink>
+const CreatePostButton = (props) => <StyledCreatePostLink to="/create-post" {...props}>Create Post</StyledCreatePostLink>
 
 export default CreatePostButton

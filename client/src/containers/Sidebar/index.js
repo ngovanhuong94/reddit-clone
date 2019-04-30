@@ -1,37 +1,9 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import styled from 'styled-components'
-import Section from '../../components/Section'
-import CreatePostButton from './CreatePostButton'
-import categories from '../../categories'
-const StyledDiv = styled.div`
-    width: 250px;
-`
-
-const StyledCategoryLink = styled(Link)`
-    display: block;
-    width: 100%;
-    text-decoration: none;
-    padding: 4px 8px;
-`
+import { connect } from 'react-redux'
+import Sidebar from './Component'
 
 
-class Sidebar extends React.Component {
-    render () {
-        return (
-            <StyledDiv>
-                <Section padded>
-                    <CreatePostButton />
-                    {categories.map(cat => (<StyledCategoryLink 
-                                                    to="/" 
-                                                    key={cat.value}>
-                                                {cat.text}
-                                            </StyledCategoryLink>))}
-                </Section>
-            </StyledDiv>
-        )
-    }
-}
+const mapStateToProps = (state) => ({
+    token: state.auth.token
+})
 
-
-export default Sidebar
+export default connect(mapStateToProps)(Sidebar)

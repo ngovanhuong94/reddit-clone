@@ -15,6 +15,7 @@ import Header from './containers/Header'
 import Home from './pages/Home'
 import Register from './pages/Register'
 import Login from './pages/Login'
+import CreatePost from './pages/CreatePost'
 
 class App extends Component {
   render() {
@@ -28,6 +29,7 @@ class App extends Component {
                 <Route exact path="/" component={Home} />
                 <Route path="/register" component={Register} />
                 <Route path="/login" component={Login} />
+                <Route path="/create-post" component={CreatePost}/>
               </Switch>
             </>
           </BrowserRouter>
