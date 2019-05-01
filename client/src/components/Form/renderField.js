@@ -5,19 +5,20 @@ import Select from '../Select'
 import Option from '../Option'
 import FormItem from './FormItem'
 import Small from '../Small'
+import Label from '../Label'
 
 const renderField = (field) => {
     switch(field.type){
         case 'select':
             return (
                 <FormItem>
+                    <Label>Category</Label>
                     <Select 
                         {...field.input}
                         type={field.type}
-                    >
-                        <Option>{field.placeholder}</Option>
+                    >   
                         {field.options.map(option => (
-                            <Option value={option.value}>{option.text}</Option>
+                            <Option key={option.value} value={option.value}>{option.text}</Option>
                         )) }
                     </Select>
                     { field.meta.touched && field.meta.error && <Small error>{field.meta.error}</Small>}

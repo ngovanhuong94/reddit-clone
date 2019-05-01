@@ -11,9 +11,14 @@ class CreatePostForm extends React.Component {
             this.props.history.push('/login')
         }
     }
+
+    onSubmit = ({ title, category, text, link }) => {
+        console.log({ title, category, text, link })
+    }
+
     render () {
         return (
-            <Form>
+            <Form onSubmit={this.props.handleSubmit(this.onSubmit)}>
                 <Field 
                     name="title" 
                     placeholder="Title" 
@@ -21,7 +26,7 @@ class CreatePostForm extends React.Component {
                     component={renderField}
                 />
                 <Field 
-                    name="title" 
+                    name="category" 
                     placeholder="Choose a category" 
                     type="select"
                     options={categories}
