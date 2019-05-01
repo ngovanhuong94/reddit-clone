@@ -26,6 +26,7 @@ passport.use(require('./config/passportLocal'))
 
 // routes
 app.use('/api/auth', require('./routes/auth'))
+app.use('/api/posts', require('./routes/post'))
 
 const PORT = process.env.PORT || 5000
 // run server

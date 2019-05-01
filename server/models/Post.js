@@ -9,7 +9,7 @@ const postSchema = new Schema({
     text: { type: String },
     author: { type: Schema.Types.ObjectId, ref: 'User'},
     views: { type: Number, default: 0 },
-    votes: [{ user: Schema.Typed.ObjectId, vote: Number, _id: false }],
+    votes: [{ user: Schema.Types.ObjectId, vote: Number, _id: false }],
     createdAt: { type: Date, default: Date.now }
 })
 
