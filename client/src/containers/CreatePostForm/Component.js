@@ -11,9 +11,13 @@ class CreatePostForm extends React.Component {
             this.props.history.push('/login')
         }
     }
-
+    componentDidUpdate() {
+        if (this.props.newPost) {
+            this.props.history.push('/')
+        }
+    }
     onSubmit = ({ title, category, text, link }) => {
-        console.log({ title, category, text, link })
+        this.props.attemptCreatePost({ title, category, text, link})
     }
 
     render () {
