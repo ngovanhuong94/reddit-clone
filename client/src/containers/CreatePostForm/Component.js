@@ -12,8 +12,9 @@ class CreatePostForm extends React.Component {
         }
     }
     componentDidUpdate() {
-        if (this.props.newPost) {
-            this.props.history.push('/')
+        const { newPost } = this.props 
+        if (newPost) {
+            this.props.history.push(`/c/${newPost.category}/${newPost.id}`)
         }
     }
     onSubmit = ({ title, category, text, link }) => {

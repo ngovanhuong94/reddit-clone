@@ -26,10 +26,10 @@ class App extends Component {
             <>
               <Header />
               <Switch>
-                <Route exact path="/" component={Home} />
                 <Route path="/register" component={Register} />
                 <Route path="/login" component={Login} />
                 <Route path="/create-post" component={CreatePost}/>
+                <Route path="/" component={Home} />
               </Switch>
             </>
           </BrowserRouter>

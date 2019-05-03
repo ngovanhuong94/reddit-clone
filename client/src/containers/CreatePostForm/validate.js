@@ -6,7 +6,7 @@ export default function (values) {
     }
 
     if (!values.category) {
-        errors.category = 'Title is required'
+        errors.category = 'Category is required'
     }
 
     if (!values.link && !values.text) {
